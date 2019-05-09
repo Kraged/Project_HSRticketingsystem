@@ -12,124 +12,124 @@ import javax.swing.border.Border;
 public class HSR_main extends JFrame implements ActionListener, MouseListener {
 	
 		static HSR_main mp = new HSR_main();
-		static Container cr = mp.getContentPane();	//
-		static Container bk = mp.getContentPane();	//璹布
-		static Container ad = mp.getContentPane();	//恨瞶
-		static Container pr = mp.getContentPane();	//布基琩高
-		static Container rev = mp.getContentPane();	//琩高璹虫
-		static Container cte = mp.getContentPane();	//痁Ω
+		static Container cr = mp.getContentPane();	//主頁
+		static Container bk = mp.getContentPane();	//訂票
+		static Container ad = mp.getContentPane();	//管理
+		static Container pr = mp.getContentPane();	//票價查詢
+		static Container rev = mp.getContentPane();	//查詢訂單
+		static Container cte = mp.getContentPane();	//班次表
 		static JPanel mpe = new JPanel();			
 		static JLabel title = new JLabel();
-		static JLabel about = new JLabel("闽");
+		static JLabel about = new JLabel("關於");
 		static JLabel aboutc = new JLabel();
 		
-		//
+		//主頁
 		static JLabel lone = new JLabel();
 		static JLabel lonp = new JLabel();
 		static JTextField nef = new JTextField();
 		static JPasswordField pwf = new JPasswordField();
-		static JButton login = new JButton("祅");
-		static JButton booking = new JButton("絬璹布");
-		static JButton checkm = new JButton("布基琩高");
-		static JButton timete = new JButton("痁Ω");
-		static JLabel news = new JLabel("程穝");
+		static JButton login = new JButton("登入");
+		static JButton booking = new JButton("線上訂票");
+		static JButton checkm = new JButton("票價查詢");
+		static JButton timete = new JButton("班次表");
+		static JLabel news = new JLabel("最新消息");
 		static JLabel nnews = new JLabel("<html>2017/01/05<br>"
-				+ "狥承禬臟璹布╰参タΑ秨<br><br>"
+				+ "東海首創「吻恆超鐵訂票系統」正式開放！<br><br>"
 				+ "2017/01/04<br>"
-				+ "承óパ畒óぃ┤⊿Τ┤ぃ幢禦布<br><br>"
+				+ "首創全車自由座列車，不怕沒有位子，只怕你不敢買票！<br><br>"
 				+ "2017/01/04<br>"
-				+ "ヘ玡Τ絬璹布ㄉΤ疭布纔磃翅克羬瞷初那Τ基ぃ獽ぇ矪穛叫教<br><br>"
+				+ "目前只有線上訂票可享有特別票優惠喔！！親臨現場饒恕只有原價，不便之處，敬請原諒。<br><br>"
 				+ "2017/01/03<br>"
-				+ "砞璹布虏间璹虫眤竊猳茎窥</html>", SwingConstants.RIGHT);
+				+ "全台首設訂票以簡潔風格列印訂單，為您節省油墨錢！</html>", SwingConstants.RIGHT);
 		static Border bdd = BorderFactory.createLineBorder(Color.black, 1);
 		static JLabel la = new JLabel(new ImageIcon("pic/hsr_cover.jpg"));
 
 //        static ImageIcon background = new ImageIcon("pic/hsr_cover.PNG");
 		
-		//璹布
-		static String[] stops = new String[]{"玭翠","","狾爵","堕","穝λ","璢","い","裹て","冻狶","古竡","玭","オ犁"};
+		//訂票頁
+		static String[] stops = new String[]{"南港","台北","板橋","桃園","新竹","苗栗","台中","彰化","雲林","嘉義","台南","左營"};
 		static String[] carlt = new String[]{"08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00"};
-		static String[] nu1 = new String[]{"","疭"};
+		static String[] nu1 = new String[]{"一般","特別"};
 		static String[] nu2 = new String[]{"1","2","3"};
-//		,"3る","4る","5る","6る","7る","8る","9る","10る","11る","12る"
-//		,"29ら","30ら","31ら"
-		static String[] month_d = new String[]{"1る","2る"};
-		static String[] day_d = new String[]{"01ら","02ら","03ら","04ら","05ら","06ら","07ら","08ら","09ら"
-		        ,"10ら","11ら","12ら","13ら","14ら","15ら","16ら","17ら","18ら","19ら"
-		        ,"20ら","21ら","22ら","23ら","24ら","25ら","26ら","27ら","28ら"};
-		static JComboBox<String> start = new JComboBox<String>(stops);	//癬翴
-		static JComboBox<String> destin = new JComboBox<String>(stops);	//沧翴
-		static JComboBox<String> nuer = new JComboBox<String>(nu1);		//布计
-		static JComboBox<String> nute = new JComboBox<String>(nu2);		//丁
+//		,"3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"
+//		,"29日","30日","31日"
+		static String[] month_d = new String[]{"1月","2月"};
+		static String[] day_d = new String[]{"01日","02日","03日","04日","05日","06日","07日","08日","09日"
+		        ,"10日","11日","12日","13日","14日","15日","16日","17日","18日","19日"
+		        ,"20日","21日","22日","23日","24日","25日","26日","27日","28日"};
+		static JComboBox<String> start = new JComboBox<String>(stops);	//起點
+		static JComboBox<String> destin = new JComboBox<String>(stops);	//終點
+		static JComboBox<String> nuer = new JComboBox<String>(nu1);		//票數
+		static JComboBox<String> nute = new JComboBox<String>(nu2);		//時間
 		static JComboBox<String> month = new JComboBox<String>(month_d);
 		static JComboBox<String> day = new JComboBox<String>(day_d);
 		static JComboBox<String> telist = new JComboBox<String>(carlt);
-		static JLabel nuber = new JLabel("布计: ");
-		static JLabel dateo = new JLabel("ら戳: ");
-		static JLabel datet = new JLabel("丁: ");
-		static JLabel putph = new JLabel("筿杠腹絏: ");
+		static JLabel nuber = new JLabel("票數: ");
+		static JLabel dateo = new JLabel("日期: ");
+		static JLabel datet = new JLabel("時間: ");
+		static JLabel putph = new JLabel("電話號碼: ");
 		static JTextField phone = new JTextField();
-		static JButton buy = new JButton("穓碝痁Ω");
-		static JButton buy1 = new JButton("絋粄潦布");
-		static JButton reset = new JButton("砞匡拒");
-		static JButton back = new JButton("");
+		static JButton buy = new JButton("搜尋班次");
+		static JButton buy1 = new JButton("確認購票");
+		static JButton reset = new JButton("重設選擇");
+		static JButton back = new JButton("返回上頁");
 		static JLabel lc = new JLabel(new ImageIcon("pic/hsr_booking.jpg"));
 		
-		//恨瞶/
-		static String[] number = new String[] {"痁Ω","101","103","105","107","112","114","116","118","201","203","205","207","212","214","216","218"};
-		static JComboBox<String> inlist = new JComboBox<String>(number);	//痁Ω琩高
-//		static JComboBox<String> onlist = new JComboBox<String>();	//沧翴琩高
-		static JButton check1 = new JButton("琩高");
-//		static JButton check2 = new JButton("琩高");
-		static JPanel train = new JPanel();							//ず场_痁Ω
-//		static JPanel time = new JPanel();							//ず场_沧翴
-		static JButton logout = new JButton("祅");
+		//管理/後台頁
+		static String[] number = new String[] {"班次","101","103","105","107","112","114","116","118","201","203","205","207","212","214","216","218"};
+		static JComboBox<String> inlist = new JComboBox<String>(number);	//班次查詢
+//		static JComboBox<String> onlist = new JComboBox<String>();	//終點查詢
+		static JButton check1 = new JButton("查詢");
+//		static JButton check2 = new JButton("查詢");
+		static JPanel train = new JPanel();							//內部_班次
+//		static JPanel time = new JPanel();							//內部_終點
+		static JButton logout = new JButton("登出");
 		static JLabel le = new JLabel(new ImageIcon("pic/hsr_admin.jpg"));
-		//璹布
+		//後台訂票頁
 			//Label train
-		static JLabel train_no = new JLabel("痁Ω腹絏: ");
-		static JLabel train_da = new JLabel("痁Ωら戳: ");
-		static JLabel train_ta = new JLabel("痁Ω丁: ");
-		static JLabel train_seatleft = new JLabel("莱煤肂: ");
-		static JLabel phone_no = new JLabel("も矗筿杠: ");		
+		static JLabel train_no = new JLabel("班次號碼: ");
+		static JLabel train_da = new JLabel("班次日期: ");
+		static JLabel train_ta = new JLabel("班次時間: ");
+		static JLabel train_seatleft = new JLabel("應繳金額: ");
+		static JLabel phone_no = new JLabel("手提電話: ");		
 		static JTextField train_no_dis = new JTextField();
 		static JTextField train_da_dis = new JTextField();
 		static JTextField train_ta_dis = new JTextField();
 		static JTextField train_pr_dis = new JTextField();
 		static JTextField phone_dis = new JTextField();		
-		static JButton confirm_train = new JButton("絋粄");
-		static JButton reset_train = new JButton("砞");
+		static JButton confirm_train = new JButton("確認");
+		static JButton reset_train = new JButton("重設");
 			//Label time
-		static JLabel time_no = new JLabel("痁Ω腹絏: ");		
+		static JLabel time_no = new JLabel("班次號碼: ");		
 		static JTextField time_no_dis = new JTextField();
 		static JTextField time_da_dis = new JTextField();
 		static JTextField time_ta_dis = new JTextField();
 		static JTextField time_pr_dis = new JTextField();
 		static JComboBox<String> time_sele_no = new JComboBox<String>();		
-		static JButton confirm_time = new JButton("絋粄");
+		static JButton confirm_time = new JButton("確認");
 		
-		//琩璹虫
-		static JLabel ber = new JLabel("璹虫絪腹: ");
-		static JLabel date = new JLabel("祇ら戳: ");
-		static JLabel goz = new JLabel("祇丁: ");
-		static JLabel cancel = new JLabel("");
-		static JButton ed = new JButton("璹虫");
-		static JButton pt = new JButton("璹虫");
-		static JLabel bank = new JLabel();//痁Ω腹絏
-		static JLabel monk = new JLabel();//璶ぶ
-		static JLabel berk = new JLabel();//璹虫絪腹
-		static JLabel datk = new JLabel();//ら戳
-		static JLabel gozk = new JLabel();//丁
+		//查看訂單頁
+		static JLabel ber = new JLabel("訂單編號: ");
+		static JLabel date = new JLabel("出發日期: ");
+		static JLabel goz = new JLabel("出發時間: ");
+		static JLabel cancel = new JLabel("已取消！");
+		static JButton ed = new JButton("取消訂單");
+		static JButton pt = new JButton("列印訂單");
+		static JLabel bank = new JLabel();//班次號碼
+		static JLabel monk = new JLabel();//要付多少
+		static JLabel berk = new JLabel();//訂單編號
+		static JLabel datk = new JLabel();//日期
+		static JLabel gozk = new JLabel();//時間
 		static JLabel lf = new JLabel(new ImageIcon("pic/hsr_pricebg.jpg"));
 		
-		//琩布基
+		//查票價頁
 		static JLabel lb = new JLabel(new ImageIcon("pic/pricetable.PNG"));
 		static JLabel lg = new JLabel(new ImageIcon("pic/hsr_pricebg.jpg"));
-		//痁Ω
+		//班次頁
 		static JLabel ld = new JLabel(new ImageIcon("pic/classtable.png"));
 		static JLabel lh = new JLabel(new ImageIcon("pic/hsr_classbg.jpg"));
 
-		//
+		//列印頁
 		static JFrame mp1 = new JFrame();
 		static JFrame mp2 = new JFrame();
 		static JFrame mp3 = new JFrame();
@@ -212,21 +212,21 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
         about.setBounds(700, 5, 30, 30);
         aboutc.setBounds(560, 20, 300, 180);
         aboutc.setVisible(false);
-        aboutc.setText("<html><div style=\"text-align: right;\">セ祘Α度ㄑ代刚<br>"
-        		+ "叫づ繦種床冀祇扳┪э<br>"
-        		+ "Τ拜肈叫筿秎┪ㄤよΑ<br>"
-        		+ "羛蹈セ珇ぇ<br>"
-        		+ "s03352032s03353047<br>"
-        		+ "s03352006s03352030<br>"
+        aboutc.setText("<html><div style=\"text-align: right;\">本程式僅供測試，<br>"
+        		+ "請勿隨意散播、發售或更改；<br>"
+        		+ "如有問題請以電郵或其他方式<br>"
+        		+ "聯絡本作品之作者們：<br>"
+        		+ "s03352032、s03353047<br>"
+        		+ "s03352006、s03352030<br>"
         		+ "s03352011<br>"
-        		+ "稰谅<br>"
+        		+ "感謝合作。<br>"
         		+ "\u00a9THUCS:103<br>"
         		+ "</html>");		
 	}
 	
 	static public void mainp(){
 		
-		//祅	
+		//登入	
 		mp.setSize(750, 800);
 //		cr.setBackground(Color.lightGray);
 		cr.setVisible(true);
@@ -237,15 +237,15 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
 		cte.setEnabled(false);
 		mp.setLayout(null);
 		mp.setVisible(true);
-		mp.setTitle("舧ㄓHickey Super-Railway璹布╰参");
+		mp.setTitle("歡迎來到Hickey Super-Railway訂票系統！");
 		mp.add(title);
-		title.setText("璹布╰参");
+		title.setText("訂票系統");
 		title.setFont(new Font("Courier", Font.ITALIC + Font.BOLD, 30));
 		title.setVisible(true);
 		title.setBounds(270, 60, 500, 80);
-		lone.setText("眀腹/璹虫腹絏");
+		lone.setText("帳號/訂單號碼");
 		lone.setFont(cm);
-		lonp.setText("盞絏/筿杠");
+		lonp.setText("密碼/電話");
 		lonp.setFont(cm);
 		nef.setFont(cm);
 		pwf.setFont(cm);
@@ -294,9 +294,9 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
 		bk.setEnabled(true);
 //		bk.setBackground(Color.yellow);
 		bk.setVisible(true);
-		title.setText("叫匡拒");		
-		lone.setText("叫匡拒癬翴: ");
-		lonp.setText("叫匡拒沧翴: ");
+		title.setText("請選擇：");		
+		lone.setText("請選擇起點: ");
+		lonp.setText("請選擇終點: ");
 		month.setBounds(200, 370, 70, 30);
 		month.setFont(cm);
 		day.setBounds(280, 370, 70, 30);
@@ -367,10 +367,10 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
 		ad.setEnabled(true);
 		ad.setBackground(Color.MAGENTA);
 		ad.setVisible(true);
-		title.setText("ず场╰参矪瞶");
+		title.setText("內部系統處理");
 		title.setBounds(100, 20, 500, 80);
-		lone.setText("叫匡拒痁Ω: ");
-//		lonp.setText("叫匡拒沧翴: ");
+		lone.setText("請選擇班次: ");
+//		lonp.setText("請選擇終點: ");
 		lone.setBounds(100,100,150,30);
 //		lonp.setBounds(100,140,150,30);
 		inlist.setBounds(250, 100, 150, 30);
@@ -478,10 +478,10 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
 		rev.setEnabled(true);
 		rev.setBackground(Color.green);
 		rev.setVisible(true);
-		title.setText("琩高璹虫");
+		title.setText("查詢訂單");
 		title.setBounds(100, 20, 500, 80);
-		lone.setText("眤痁Ω: ");
-		lonp.setText("莱煤肂: ");
+		lone.setText("您的班次: ");
+		lonp.setText("應繳金額: ");
 		lone.setBounds(100,100,150,30);
 		lonp.setBounds(100,140,150,30);
 		ber.setBounds(100, 180, 150, 30);
@@ -541,7 +541,7 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
 //		pr.setBackground(Color.orange);
 		pr.setVisible(true);
 		logout.setBounds(35, 40, 80, 50);
-		logout.setText("");
+		logout.setText("返回");
 
 		mp.setSize(800, 600);
 		lb.setBounds(35, 120, 722, 399);
@@ -565,7 +565,7 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
 //		cte.setBackground(Color.pink);
 		cte.setVisible(true);
 		logout.setBounds(35, 40, 80, 50);
-		logout.setText("");
+		logout.setText("返回");
 
 		mp.setSize(1300, 750);
 		ld.setBounds(35, 120, 1223, 564);
@@ -608,16 +608,16 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
 		String cuss = "0" + Integer.toString(cust);
 //		System.out.println(cuss);
 		mp1.setVisible(true);
-		mystart.setText("癬翴: "+start.getSelectedItem().toString());
+		mystart.setText("起點: "+start.getSelectedItem().toString());
 		//System.out.print(start.getSelectedIndex());
-		myend.setText("沧翴: "+destin.getSelectedItem().toString());
-		mytyno.setText("布贺: "+nuer.getSelectedItem().toString());
+		myend.setText("終點: "+destin.getSelectedItem().toString());
+		mytyno.setText("票種: "+nuer.getSelectedItem().toString());
 		myttno.setText("/ "+nute.getSelectedItem().toString());
 //		mytrno.setText(arg0);
-		mystday.setText("ら戳: "+month.getSelectedItem().toString()+day.getSelectedItem().toString());
-		mysttime.setText("丁: "+telist.getSelectedItem().toString());
-		myno.setText("璹布腹絏: "+cuss);
-		myph.setText("筿杠腹絏: "+phone.getText());
+		mystday.setText("日期: "+month.getSelectedItem().toString()+day.getSelectedItem().toString());
+		mysttime.setText("時間: "+telist.getSelectedItem().toString());
+		myno.setText("訂票號碼: "+cuss);
+		myph.setText("電話號碼: "+phone.getText());
 
 		mystart.setFont(cn);
 		myend.setFont(cn);
@@ -677,13 +677,13 @@ public class HSR_main extends JFrame implements ActionListener, MouseListener {
 		String cuss = "0" + Integer.toString(cust);
 //		System.out.println(cuss);
 		mp2.setVisible(true);
-//		mystart.setText("癬翴: "+train_no_dis.getSelectedItem().toString());
-//		myend.setText("沧翴: "+train_da_dis.getSelectedItem().toString());
-		mytrno.setText("痁Ω: "+train_no_dis.getText());
-		mystday.setText("ら戳: "+train_da_dis.getText());
-		mysttime.setText("丁: "+train_ta_dis.getText());
-		myno.setText("璹布腹絏: "+cust);
-		myph.setText("筿杠腹絏: "+phone_dis.getText());
+//		mystart.setText("起點: "+train_no_dis.getSelectedItem().toString());
+//		myend.setText("終點: "+train_da_dis.getSelectedItem().toString());
+		mytrno.setText("班次: "+train_no_dis.getText());
+		mystday.setText("日期: "+train_da_dis.getText());
+		mysttime.setText("時間: "+train_ta_dis.getText());
+		myno.setText("訂票號碼: "+cust);
+		myph.setText("電話號碼: "+phone_dis.getText());
 
 		mytrno.setFont(cn);
 		mystday.setFont(cn);
@@ -747,7 +747,7 @@ try{
 //		System.out.println(a);
 		long b = Long.parseLong(a);
 //		System.out.println(b);
-        if(Rest.next()){					//癸戈
+        if(Rest.next()){					//核對資料
         	Long relst = Rest.getLong("password");
 //        	System.out.println(Rest);
         	if(b == relst)
@@ -758,7 +758,7 @@ try{
         	}
         	else if(b != relst)
         	{
-        		JOptionPane.showMessageDialog(mp, "岿盞絏/眀め!");
+        		JOptionPane.showMessageDialog(mp, "錯密碼/帳戶!");
         		mainp();
         	}
            // ps.close();
@@ -791,14 +791,14 @@ try{
 //      System.out.println(destin.getSelectedIndex());
 //      System.out.println(qCk);
       
-      if(Rest_1.next()){					//癸戈
+      if(Rest_1.next()){					//核對資料
     	  
       	String relst = Rest_1.getString("train_no");
       	
 //      	System.out.println(relst);
       	train_dino = relst;
       	
-      		if (JOptionPane.showConfirmDialog(mp, "絋﹚戈癟盾\n絋﹚盢礚猭э翅", "猔種",
+      		if (JOptionPane.showConfirmDialog(mp, "確定以上資訊嗎？\n確定將無法更改喔！", "注意！",
 					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
 			{
 				start.setEnabled(false);
@@ -817,7 +817,7 @@ try{
       	}
       else
       {
-        		JOptionPane.showMessageDialog(mp, "⊿Τ痁Ω!");
+        		JOptionPane.showMessageDialog(mp, "沒有班次!");
         	}
      
          // ps.close();
@@ -843,12 +843,12 @@ try{
 //	      System.out.println(start.getSelectedIndex());
 //	      System.out.println(destin.getSelectedIndex());
 //	      System.out.println(qCk);
-	      if(Rest_1.next()){					//癸戈
+	      if(Rest_1.next()){					//核對資料
 	    	  
 	     String relst = Rest_1.getString("train_no");
 //	     System.out.println(relst);
 	      	
-	      		if (JOptionPane.showConfirmDialog(mp, "絋﹚戈癟盾\n絋﹚盢礚猭э翅", "猔種",
+	      		if (JOptionPane.showConfirmDialog(mp, "確定以上資訊嗎？\n確定將無法更改喔！", "注意！",
 						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
 				{
 					start.setEnabled(false);
@@ -867,7 +867,7 @@ try{
 	      	}
 	      else
 	      {
-	        		JOptionPane.showMessageDialog(mp, "⊿Τ痁Ω!");
+	        		JOptionPane.showMessageDialog(mp, "沒有班次!");
 	        	}
 	     
 	         // ps.close();
@@ -883,7 +883,7 @@ try{
 	
 	}
 	
-	static public void price(){ //璹虫布基琩高
+	static public void price(){ //訂單票價查詢
 		
 //		System.out.println("a");
 		try {
@@ -915,13 +915,13 @@ try{
 //		System.out.println(relst);
 	}
 	
-	static public void back() {  //籓
+	static public void back() {  //後臺
 //		if(start.getSelectedIndex()<destin.getSelectedIndex()) 
 		price();
 		try { 
 				Class.forName("com.mysql.jdbc.Driver").newInstance(); 
 				Connection con = DriverManager.getConnection(url, user, password); 
-				String sql ="SELECT time_start FROM t WHERE train_no =" + inlist.getSelectedItem() + " and train_start = 'a'";  //玭翠祇ó痁Ω
+				String sql ="SELECT time_start FROM t WHERE train_no =" + inlist.getSelectedItem() + " and train_start = 'a'";  //南港發車班次
 				PreparedStatement ps = con.prepareStatement(sql);       
 			      ps.execute("USE hsr");     
 			      ps.executeQuery(sql);       
@@ -929,7 +929,7 @@ try{
 			      ps.getResultSet();
 //			      System.out.println(inlist.getSelectedItem());
 //			      System.out.println(sql);
-			      if(Rest_1.next()){					//癸戈
+			      if(Rest_1.next()){					//核對資料
 			      	relst = Rest_1.getString("time_start");
 //			      	System.out.println(relst);
 			      	}
@@ -1024,7 +1024,7 @@ try{
 			}
 			else if (((nef.getText().equals("")) || (pwf.getText().equals(""))) )
 			{
-				JOptionPane.showMessageDialog(mp, "叫块眀腹/璹虫 ┪ 盞絏/筿杠");
+				JOptionPane.showMessageDialog(mp, "請輸入帳號/訂單 或 密碼/電話！");
 				mainp();
 				
 			}
@@ -1109,7 +1109,7 @@ try{
 //			System.out.println("a");
 			if ( phone.getText().equals("") )
 			{
-				JOptionPane.showMessageDialog(mp, "叫块筿杠腹絏");
+				JOptionPane.showMessageDialog(mp, "請輸入電話號碼！");
 			}
 			else
 			{
@@ -1125,11 +1125,11 @@ try{
 		{
 			if (phone_dis.getText().equals(""))
 			{
-				JOptionPane.showMessageDialog(mp, "叫块筿杠腹絏");
+				JOptionPane.showMessageDialog(mp, "請輸入電話號碼！");
 			}
 			else
 			{
-				if (JOptionPane.showConfirmDialog(mp, "絋﹚戈癟盾\n絋﹚盢礚猭э翅", "猔種",
+				if (JOptionPane.showConfirmDialog(mp, "確定以上資訊嗎？\n確定將無法更改喔！", "注意！",
 						JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
 				{
 					phone_dis.setEnabled(false);
@@ -1139,7 +1139,7 @@ try{
 		}
 		if (e.getSource() == ed)
 		{
-			if (JOptionPane.showConfirmDialog(mp, "絋﹚璶盾\n絋﹚盢礚猭э翅", "猔種",
+			if (JOptionPane.showConfirmDialog(mp, "確定要取消嗎？\n確定將無法更改喔！", "注意！",
 					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
 			{
 				cancel.setVisible(true);
